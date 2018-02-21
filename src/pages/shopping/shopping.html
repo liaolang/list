@@ -1,0 +1,48 @@
+<ion-header>
+
+    <ion-navbar color="primary"> 
+    <ion-buttons left>
+        <button ion-button icon-olny menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+    
+        
+    <ion-title text-center> Shopping list </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-grid padding>
+      <ion-row>
+        <ion-col col-9 ion-item>
+          <ion-input type="text" placeholder="Type anything you want" [(ngModel)]="task" (keyup.enter)="addTask(task)">
+          </ion-input>
+        </ion-col>
+        <ion-col col-3 ion-item text-right>
+          <button ion-button clear (click)="addTask(task)">
+             Add
+             <!-- <ion-icon name="add"></ion-icon> -->
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+         
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <ion-list margin-top padding>
+    <ng-container *ngFor="let item of groupListRef$ | async;">
+      <ion-item >
+        <button ion-button item-right checked="false"  (click)="updateStatus(item)">
+          <ion-icon name="ios-remove-circle-outline"></ion-icon></button>
+        <!-- </ion-checkbox> -->
+        <ion-label>{{item.value}}</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

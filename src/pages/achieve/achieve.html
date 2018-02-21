@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+      <ion-buttons left>
+          <button ion-button icon-olny menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          </ion-buttons>
+
+    <ion-title text-center>Achieve</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-list>
+    <ion-grid padding>
+      <ng-container *ngFor="let item of groupListRef$ | async;">
+          <ion-row>
+            <ion-col col-8>
+              <ion-label margin-left>{{item.value}}</ion-label>
+            </ion-col>
+
+            <ion-col col-4 text-right>
+              <button ion-button clear item-right (click)="updateStatus(item)">
+                <ion-icon name="md-git-compare"></ion-icon>
+              </button>
+              <button ion-button clear item-right (click)="deleteItem(item)">
+                <ion-icon name="md-close"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+      </ng-container>
+    </ion-grid>
+  </ion-list>
+</ion-content>
